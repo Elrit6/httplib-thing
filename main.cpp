@@ -47,7 +47,8 @@ private:
 public:
 	Server(const string& address, const size_t& port) {
 		svr.Get("/", [this](const httplib::Request& req, httplib::Response &res) {
-			res.set_content("<script>window.location.href='/" + to_string(rand() % posts.size()) + "';</script>", "text/html");
+			const string redirectUrl = posts.empty() ? "/upload" : "/" + to_string(rand() % posts.size());
+			res.set_content("<script>window.location.href='" + redirectUrl + "';</script>", "text/html");
 		});
 		svr.Get(R"(/(\d+))", [this](const httplib::Request& req, httplib::Response &res) {
 			res.set_content(getFile("html/index.html", {
