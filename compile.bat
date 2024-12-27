@@ -1,0 +1,1 @@
+g++ main.cpp -lws2_32 -o main.exe
