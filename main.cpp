@@ -50,7 +50,6 @@ public:
 			res.set_content("<script>window.location.href='/" + to_string(rand() % posts.size()) + "';</script>", "text/html");
 		});
 		svr.Get(R"(/(\d+))", [this](const httplib::Request& req, httplib::Response &res) {
-			bool areTherePosts = bool(posts.size());
 			res.set_content(getFile("html/index.html", {
 				{"{postContent}", posts[stoi(req.matches[1])].content}			
 			}), "text/html");
