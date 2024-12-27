@@ -13,7 +13,6 @@ using namespace std;
 class Post {
 public:
 	string content;
-	int votes = 0;
 	Post() = default;
 	Post(const string& content) : content(content) {};
 };
